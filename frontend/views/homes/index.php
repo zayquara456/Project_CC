@@ -62,12 +62,8 @@ require_once 'helpers/Helper.php';
                             BÍ MẬT SƠN TINH CAMP </a>
                     </h3>
                     <div class="news-description">
-                        Hàng trăm năm qua, không ít những câu chuyện truyền tai nhau sản sinh ra nơi hòn đảo Sơn
-                        Tinh xinh đẹp. Họ không cùng màu da, không cùng tôn giáo, họ đến từ nhiều nơi và họ là
-                        những
-                        con người sôi nổi, thích phiêu lưu. Có phải vì những lời kể ấy đã lôi cuốn họ tìm đến
-                        Sơn
-                        Tinh, hay chính vì sự hoang dã tuyệt đẹp của không gian, bởi sự trù phú của sản
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium quam fugit itaque quos error beatae quis porro, voluptates nobis! Aut provident accusantium error quo blanditiis itaque, placeat laudantium eos tenetur.
+                        Minima cupiditate quod sed, neque necessitatibus magnam atque officiis delectus omnis fugiat dolorem rem vitae autem harum accusamus labore excepturi distinctio tenetur totam iure earum libero! Est beatae maxime voluptatum?</p>
                     </div>
                 </div>
             </div>
