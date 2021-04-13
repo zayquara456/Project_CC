@@ -81,6 +81,7 @@ class ProductController extends Controller {
     $this->content = $this->render('views/products/detail.php', [
       'product' => $product
     ]);
+	require_once 'views/layouts/main.php';
     require_once 'views/products/detail.php';
 //    echo "<pre>";
 //        print_r($_GET);
