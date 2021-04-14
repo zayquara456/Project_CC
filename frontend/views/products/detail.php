@@ -16,6 +16,10 @@ require_once 'helpers/Helper.php';
                     <div class="product-price">
                       <?php echo number_format($product['price'], 0, '', '.'); ?>₫
                     </div>
+					  <div class="product-info">
+                    <p class="product-thongtin">
+                      <?php echo $product['info']; ?>
+                    </p></div>
                     <div class="product-cart">
                         <span data-id="<?php echo $product['id']; ?>" class="add-to-cart">
                             <i class="fa fa-cart-plus"></i> Thêm vào giỏ
@@ -37,74 +41,35 @@ require_once 'helpers/Helper.php';
             </div>
             <div class="detail-comment">
                 <h2 class="link-category-item">Bình luận</h2>
-                <div class="fb-comments" data-href="https://sukien.net" data-width="100%"
+                <div class="fb-comments" data-href="https://zayquara1.xtgem.com" data-width="100%"
                      data-numposts="5"></div>
             </div>
         </div>
         <div class="news-relative-wrap col-md-4 col-sm-4 col-xs-12">
             <h4 class="link-category-item">Sản phẩm khác</h4>
+			  <?php if (!empty($products)): ?>
             <ul class="news-relative">
+				 <?php foreach ($products AS $product):
+              $slug = Helper::getSlug($product['title']);
+              $product_link = "san-pham/$slug/" . $product['id'] . ".html";
+              ?>
                 <li>
-                    <a href='product_detail.html' class="news-relative-link">
+                    <a href="<?php echo $product_link; ?>" class="news-relative-link">
                                 <span class="news-relative-img">
-                                <img src="assets/images/samsung-galaxy-note-10-plus-silver-400x460.png"
-                                     alt="no-image" title="SamSung Note 10"
+                                <img class="secondary-img img-responsive" title="<?php echo $product['title'] ?>"
+                             src="../backend/assets/uploads/<?php echo $product['avatar'] ?>"
+                             alt="<?php echo $product['title'] ?>"
                                      class="detail-relative-img"/>
                                 </span>
                         <span class="detail-relative-content">
-                                    SamSung Note 10
+                                   <?php echo $product['title'] ?>
                                 </span>
                     </a>
                 </li>
-                <li>
-                    <a href='product_detail.html' class="news-relative-link">
-                                <span class="news-relative-img">
-                                <img src="assets/images/samsung-galaxy-note-10-plus-silver-400x460.png"
-                                     alt="no-image" title="SamSung Note 10"
-                                     class="detail-relative-img"/>
-                                </span>
-                        <span class="detail-relative-content">
-                                    SamSung Note 10
-                            </span>
-                    </a>
-                </li>
-                <li>
-                    <a href='product_detail.html' class="news-relative-link">
-                                <span class="news-relative-img">
-                                <img src="assets/images/samsung-galaxy-note-10-plus-silver-400x460.png"
-                                     alt="no-image" title="SamSung Note 10"
-                                     class="detail-relative-img"/>
-                                </span>
-                        <span class="detail-relative-content">
-                                    SamSung Note 10
-                            </span>
-                    </a>
-                </li>
-                <li>
-                    <a href='product_detail.html' class="news-relative-link">
-                                <span class="news-relative-img">
-                                <img src="assets/images/samsung-galaxy-note-10-plus-silver-400x460.png"
-                                     alt="no-image" title="SamSung Note 10"
-                                     class="detail-relative-img"/>
-                                </span>
-                        <span class="detail-relative-content">
-                                    SamSung Note 10
-                            </span>
-                    </a>
-                </li>
-                <li>
-                    <a href='product_detail.html' class="news-relative-link">
-                                <span class="news-relative-img">
-                                <img src="assets/images/samsung-galaxy-note-10-plus-silver-400x460.png"
-                                     alt="no-image" title="SamSung Note 10"
-                                     class="detail-relative-img"/>
-                                </span>
-                        <span class="detail-relative-content">
-                                    SamSung Note 10
-                            </span>
-                    </a>
-                </li>
+			  <?php endforeach; ?>
+				
             </ul>
+			     <?php endif; ?>
         </div>
     </div>
 </div>
