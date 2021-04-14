@@ -77,10 +77,13 @@ class ProductController extends Controller {
     $id = $_GET['id'];
     $product_model = new Product();
     $product = $product_model->getById($id);
-
+	 $products = $product_model->getProductInHomePage();
+	
     $this->content = $this->render('views/products/detail.php', [
-      'product' => $product
+      'product' => $product,
+	  'products' => $products
     ]);
+	require_once 'views/layouts/main.php';
     require_once 'views/products/detail.php';
 //    echo "<pre>";
 //        print_r($_GET);
