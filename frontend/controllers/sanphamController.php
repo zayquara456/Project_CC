@@ -7,10 +7,12 @@ class SanPhamController extends Controller {
     $product_model = new Product();
     $products = $product_model->getProductInHomePage();
 	$danhmuc = $product_model->getProductInCate();
+	$productfill = $product_model->getProductInStore();
 
     $this->content = $this->render('views/homes/sanpham.php', [
       'products' => $products,
-	  'danhmuc' => $danhmuc
+	  'danhmuc' => $danhmuc,
+	  'productfill' => $productfill
     ]);
     require_once 'views/layouts/main.php';
   }

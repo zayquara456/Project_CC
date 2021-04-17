@@ -46,7 +46,7 @@ require_once 'helpers/Helper.php';
               <a href="danh-sach-san-pham.html" class="link-category-item"><?php echo $dm['name'] ?></a>
           </h1>
           <div class="link-secondary-wrap row">
-            <?php foreach ($products AS $product):
+            <?php foreach ($productfill AS $product):
               $slug = Helper::getSlug($product['title']);
               $product_link = "san-pham/$slug/" . $product['id'] . ".html";
                 $product_cart_add = "them-vao-gio-hang/" . $product['id'] . ".html"; if ($product['category_id'] == $dm['id']) {
