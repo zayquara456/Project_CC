@@ -5,7 +5,6 @@ require_once 'models/Product.php';
 class SanPhamController extends Controller {
   public function index() {
     $product_model = new Product();
-    $products = $product_model->getProductInHomePage();
 	$danhmuc = $product_model->getProductInCate();
 	$productfill = $product_model->getProductInStore();
 
