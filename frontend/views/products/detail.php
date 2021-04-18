@@ -16,10 +16,6 @@ require_once 'helpers/Helper.php';
                     <div class="product-price">
                       <?php echo number_format($product['price'], 0, '', '.'); ?>₫
                     </div>
-					  <div class="product-info">
-                    <p class="product-thongtin">
-                      <?php echo $product['info']; ?>
-                    </p></div>
                     <div class="product-cart">
                         <span data-id="<?php echo $product['id']; ?>" class="add-to-cart">
                             <i class="fa fa-cart-plus"></i> Thêm vào giỏ
