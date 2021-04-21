@@ -37,7 +37,7 @@ require_once 'helpers/Helper.php';
             </div>
             <div class="detail-comment">
                 <h2 class="link-category-item">Bình luận</h2>
-                <div class="fb-comments" data-href="https://zayquara1.xtgem.com" data-width="100%"
+                <div class="fb-comments" data-href="https://google.com" data-width="100%"
                      data-numposts="5"></div>
             </div>
         </div>

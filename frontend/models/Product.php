@@ -47,8 +47,6 @@ class Product extends Model {
     return $products;
   }
  public function getProductInCate() {
- 
-    //do cả 2 bảng products và categories đều có trường name, nên cần phải thay đổi lại tên cột cho 1 trong 2 bảng
     $sql_select = "SELECT categories.* FROM categories WHERE categories.status = 1";
 
     $obj_select = $this->connection->prepare($sql_select);
@@ -57,11 +55,6 @@ class Product extends Model {
     $sanphams = $obj_select->fetchAll(PDO::FETCH_ASSOC);
     return $sanphams;
   }
-  /**
-   * Lấy thông tin sản phẩm theo id
-   * @param $id
-   * @return mixed
-   */
   public function getById($id)
   {
     $obj_select = $this->connection
