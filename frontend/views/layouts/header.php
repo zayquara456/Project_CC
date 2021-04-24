@@ -22,9 +22,9 @@
                         <a href="#" class="link-icon-laguage material-button submenu-toggle">
                             <img src="assets/images/icon-flag-vn.png" class="icon-language">
                         </a>
-                        <a href="#" class="link-icon-laguage material-button submenu-toggle">
+                        <!-- <a href="#" class="link-icon-laguage material-button submenu-toggle">
                             <img src="/template/camping1/assets/images/icon-flag-en.png" class="icon-language">
-                        </a>
+                        </a> -->
                     </li>
                     <li>
                         <a href="gio-hang-cua-ban.html" class="cart-link">
@@ -81,8 +81,8 @@
                 </li>
 
                 <li>
-                    <a href="news.html" class="material-button submenu-toggle">Tin tức <span
-                                class="fa fa-angle-down"></span></a>
+                    <a href="news.html" class="material-button submenu-toggle">Tin tức</a>
+                    <!-- <span class="fa fa-angle-down"></span> -->
                     <div class="header-submenu">
                         <ul>
                             <li><a href="index.html">Email</a></li>

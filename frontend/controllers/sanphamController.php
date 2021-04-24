@@ -9,7 +9,7 @@ class SanPhamController extends Controller {
 	$productfill = $product_model->getProductInStore();
 
     $this->content = $this->render('views/homes/sanpham.php', [
-      'products' => $products,
+      // 'products' => $products,
 	  'danhmuc' => $danhmuc,
 	  'productfill' => $productfill
     ]);
