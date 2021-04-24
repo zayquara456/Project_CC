@@ -72,7 +72,7 @@
             <ul class="header-navigation" data-show-menu-on-mobile>
                 <li>
                     <a href="index.php" class="home-link material-button submenu-toggle">
-                        LOGO
+                        <image width="120px" src="\backend\assets\images\minilogo.png">
                     </a>
 
                 </li>
@@ -81,8 +81,7 @@
                 </li>
 
                 <li>
-                    <a href="news.html" class="material-button submenu-toggle">Tin tức <span
-                                class="fa fa-angle-down"></span></a>
+                    <a href="news.html" class="material-button submenu-toggle">Tin tức</a>
                     <div class="header-submenu">
                         <ul>
                             <li><a href="index.html">Email</a></li>

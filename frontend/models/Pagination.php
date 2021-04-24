@@ -84,7 +84,7 @@ class Pagination
       $danhmuc = $this->params['cateid'];
       $page = $current_page - 1;
       $prev_url =
-        "index.php?controller=$controller&cateid=$danhmuc&page=$page";
+        "dssp/$danhmuc/$page.html";
       //tạo cấu trúc li cho biến $prev_page
       $prev_page = "<li><a href='$prev_url'>Prev</a></li>";
     }
@@ -105,7 +105,7 @@ class Pagination
       $danhmuc = $this->params['cateid'];
       $page = $current_page + 1;
       $next_url =
-        "index.php?controller=$controller&cateid=$danhmuc&page=$page";
+        "dssp/$danhmuc/$page.html";
       $next_page = "<li><a href='$next_url'>Next</a></li>";
     }
     return $next_page;
@@ -122,7 +122,7 @@ class Pagination
       return '';
     }
 
-    $data .= "<ul class='pagination'>";
+    $data .= "<div class='product container'><ul class='pagination'>";
     //gắn link Prev vào đầu tiên
     $prev_link = $this->getPrevPage();
     $data .= $prev_link;
@@ -139,7 +139,7 @@ class Pagination
         $current_page = $this->getCurrentPage();
         //hiển thị trang 1, trang cuối, trang ngay trước trang hiện tại và trang ngay sau trang hiện tại
         if ($page == 1 || $page == $total_page || $page  == $current_page - 1 || $page == $current_page + 1) {
-          $page_url = "index.php?controller=$controller&cateid=$danhmuc&page=$page";
+          $page_url = "dssp/$danhmuc/$page.html";
           $data .= "<li><a href='$page_url'>$page</a></li>";
         }
         //nếu là trang hiện tại thì sẽ ko có link
@@ -166,7 +166,7 @@ class Pagination
           $data .= "<li class='active'><a href='#'>$page</a></li>";
         } else {
           $page_url
-            = "index.php?controller=$controller&cateid=$danhmuc&page=$page";
+            = "dssp/$danhmuc/$page.html";
           $data .= "<li><a href='$page_url'>$page</a></li>";
         }
       }
@@ -176,7 +176,7 @@ class Pagination
     //gắn link NExt vào cuối của cấu trúc phân trang
     $next_link = $this->getNextPage();
     $data .= $next_link;
-    $data .= "</ul>";
+    $data .= "</ul></div>";
     return $data;
   }
 }
