@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 23, 2021 at 11:10 AM
+-- Generation Time: Apr 24, 2021 at 01:56 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.2.31
 
@@ -20,6 +20,186 @@ SET time_zone = "+00:00";
 --
 -- Database: `project_cc`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categories`
+--
+
+CREATE TABLE `categories` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL COMMENT 'Tên danh mục',
+  `type` tinyint(3) DEFAULT 0 COMMENT 'Loại danh mục: 0 - Product, 1 - News',
+  `avatar` varchar(100) DEFAULT NULL COMMENT 'Tên file ảnh danh mục',
+  `description` text DEFAULT NULL COMMENT 'Mô tả chi tiết cho danh mục',
+  `status` tinyint(3) DEFAULT 0 COMMENT 'Trạng thái danh mục: 0 - Inactive, 1 - Active',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() COMMENT 'Ngày tạo danh mục',
+  `updated_at` datetime DEFAULT NULL COMMENT 'Ngày cập nhật cuối'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id`, `name`, `type`, `avatar`, `description`, `status`, `created_at`, `updated_at`) VALUES
+(8, 'Samsung', 0, '1616920984-Screenshot_1.png', '<p>Tivi Samsung</p>\r\n', 1, '2021-03-28 08:43:04', NULL),
+(9, 'Sony', 0, '1618416592-sony4.jpg', '<p>danh mục sony</p>\r\n', 1, '2021-04-14 16:09:52', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customers`
+--
+
+CREATE TABLE `customers` (
+  `id` int(50) NOT NULL,
+  `customername` varchar(200) CHARACTER SET utf8 DEFAULT NULL,
+  `password` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `first_name` varchar(200) CHARACTER SET utf8 DEFAULT NULL,
+  `last_name` varchar(200) CHARACTER SET utf8 DEFAULT NULL,
+  `phone` int(11) DEFAULT NULL,
+  `address` varchar(200) CHARACTER SET utf8 DEFAULT NULL,
+  `email` varchar(200) NOT NULL,
+  `avatar` varchar(200) DEFAULT NULL,
+  `jobs` varchar(200) DEFAULT NULL,
+  `last_login` timestamp NULL DEFAULT NULL,
+  `facebook` varchar(200) DEFAULT NULL,
+  `status` varchar(200) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `update_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='id cua khach hang';
+
+--
+-- Dumping data for table `customers`
+--
+
+INSERT INTO `customers` (`id`, `customername`, `password`, `first_name`, `last_name`, `phone`, `address`, `email`, `avatar`, `jobs`, `last_login`, `facebook`, `status`, `created_at`, `update_at`) VALUES
+(1, 'truongdu0212@gmail.com', '9e141c60b24bd8ccd16d8a0eaddb04f5', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, '1', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `news`
+--
+
+CREATE TABLE `news` (
+  `id` int(11) NOT NULL,
+  `title` varchar(100) NOT NULL COMMENT 'Tiêu đề tin tức',
+  `summary` varchar(100) DEFAULT NULL COMMENT 'Mô tả ngắn cho tin tức',
+  `content` varchar(1000) DEFAULT NULL,
+  `avatar` varchar(1000) DEFAULT NULL COMMENT 'Tên file ảnh tin tức',
+  `status` int(11) NOT NULL,
+  `seo_title` varchar(100) DEFAULT NULL COMMENT 'Từ khóa seo cho title',
+  `seo_description` varchar(100) DEFAULT NULL COMMENT 'Từ khóa seo cho phần mô tả',
+  `seo_keywords` varchar(100) DEFAULT NULL COMMENT 'Các từ khóa seo',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() COMMENT 'Ngày tạo',
+  `updated_at` datetime DEFAULT NULL COMMENT 'Ngày cập nhật cuối'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `news`
+--
+
+INSERT INTO `news` (`id`, `title`, `summary`, `content`, `avatar`, `status`, `seo_title`, `seo_description`, `seo_keywords`, `created_at`, `updated_at`) VALUES
+(1, 'Các loại tivi phổ biến hiện nay - Đặc điểm chi tiết của từng loại!', 'Trên thị trường hiện này có nhiều loại tivi từ dòng tivi thông minh cao cấp đến những tivi cơ bản. M', 'Tivi LED là loại tivi màn hình phẳng sử dụng đèn chiếu sáng là đèn LED thay cho đèn huỳnh quang như trước đây. Tivi LED có ưu điểm là tiết kiệm điện, tuổi thọ cao và hiển thị hình ảnh đẹp hơn so với tivi dùng đèn huỳnh quang.', 'mot-so-loai-tivi-pho-bien-hien-nay-001.jpg', 1, NULL, NULL, NULL, '2021-04-21 10:16:44', NULL),
+(2, 'TCL Việt Nam ra mắt TV Mini-LED mới nhất 2021 và các sản phẩm AixIoT', 'Ngày 26/3 vừa qua, TCL Việt Nam, một trong những công ty điện tử tiêu dùng hàng đầu phối hợp cùng Mạ', 'dụng khác theo chiến lược AIxIoT hướng tới tương lai.\r\nTV Mini-LED, QLED và 4K HDR cao cấp mới nhất 2021\r\n\r\n4 mẫu TV mới nổi bật nhất năm 2021 gồm TV C825 Mini-LED thế hệ tiếp theo, QLED AI TV C728, C725 và TV Android 4K HDR P725. Sự kiện ra mắt được thực hiện trên nền tảng trực tuyến với trải nghiệm và chia sẻ thực tế từ anh Trần Mạnh Hiệp.\r\n\r\nNgoài ra, TCL cũng lên dự định cập nhật Google TV vào nửa cuối năm 2021. TCL Google TV tập hợp các bộ phim, chương trình, truyền hình trực tiếp,… từ tất cả các ứng dụng và thuê bao, và sắp xếp chúng cho từng người dùng.\r\n\r\nTCL 4K Mini-LED C825 TV\r\n\r\nTivi TCL Mini-LED 4K luôn đảm bảo người dùng tận hưởng trải nghiệm xem vượt trội, cho dù họ đang xem thể thao, phim hoặc chương trình truyền hình, chơi game hay kết nối với bạn bè và gia đình. C825 sử dụng chế độ đèn nền chiếu thẳng giúp giảm đáng kể kích thước hạt của đèn LED truyền thống.\r\n\r\n', 'photo-1-1616814274997510820367.jpg', 1, NULL, NULL, NULL, '2021-04-21 10:35:09', NULL),
+(3, 'Mẹo làm sạch màn hình TV đơn giản và an toàn, mà vẫn giữ cho hình ảnh luôn rõ nét', 'Làm sạch TV không khó - tất cả những gì bạn cần là loại vải lau phù hợp.\r\n\r\n', 'Làm sạch TV không khó - tất cả những gì bạn cần là loại vải lau phù hợp.\r\nCác dòng TV khác nhau có thể nhạy cảm ở các khu vực khác nhau, do đó, phương pháp tốt nhất để làm sạch màn hình TV cũng có thể khác nhau tùy thuộc vào loại TV trong gia đình bạn.\r\n\r\nCác TV độ nét cao như OLED và LCD có xu hướng màn hình cực kỳ nhạy cảm và có thể dễ trầy xước, vì vậy cần phải hết sức cẩn thận khi làm sạch chúng.\r\n\r\nNhưng nhìn chung, có một phương pháp chung đơn giản để làm sạch bất kỳ màn hình TV nào.\r\n\r\nCách làm sạch màn hình TV\r\n\r\nTrước hết, hãy nhớ luôn nhẹ nhàng. Màn hình TV rất nhạy cảm và nếu không cẩn thận, bạn có thể làm hỏng hoặc thậm chí làm đổ TV. Không ai muốn mang lại những rắc rối lớn chỉ vì muốn lau chùi một chút bụi bặm.\r\n\r\nNhớ tắt TV trước khi làm sạch nó. Tắt TV giúp giảm nguy cơ hư hỏng điện và màn hình tối của TV giúp bạn dễ dàng nhìn thấy bụi, bẩn, tóc và cặn bẩn.\r\n\r\nHãy sử dụng một miếng vải mềm và khô. Vải sợi nhỏ là một sự lựa chọn tuyệt vời. Các loại vải sợi nhỏ có thể dễ ', 'photo1615453624797-16154536249401290089398.jpg', 1, NULL, NULL, NULL, '2021-04-21 10:35:09', NULL),
+(4, 'Lý do TV Sony BRAVIA chinh phục được những nhà làm phim chuyên nghiệp', 'Tái tạo được những sắc thái tinh tế của màu sắc, ánh sáng và hiệu ứng chuyển tông màu theo đúng ý đồ', 'Có thể nói, Sony là một trong những thương hiệu góp mặt trọn vẹn ở mọi quy trình sản xuất phim điện ảnh. Những thước phim được bấm máy với máy ghi hình Sony, xử lý hậu kỳ với ứng dụng Sony Vega Pro sử dụng màn hình tham chiếu Sony OLED monitor, thực hiện bởi Sony Picture và phân phối đến người dùng trên những chiếc BRAVIA.\r\n\r\nLý do TV Sony BRAVIA chinh phục được những nhà làm phim chuyên nghiệp - Ảnh 1.\r\nCông nghệ tối tân giúp TV BRAVIA đảm bảo sáng tạo nguyên bản của các nhà làm phim được tái hiện một cách chuẩn xác từ hình ảnh đến âm thanh (Sony X9500H & Loa HT-G700).\r\n\r\n\r\nKhông chỉ là sự đồng nhất giữa các khâu, Sony còn am hiểu cách để tạo ra những khung hình gần với nguyên bản bậc nhất, truyền tải hình ảnh, âm thanh theo đúng ý đồ của đạo diễn đến với khán giả. Cũng bởi vậy mà dòng TV BRAVIA đã chinh phục được những nhà làm phim chuyên nghiệp, vốn luôn được đánh giá có những đôi tai, đôi mắt khó tính.\r\n\r\nTôn trọng sự trung thực\r\n\r\nKhi tạo ra TV BRAVIA, mục tiêu của các kỹ sư tại S', '1612320232373-171-0-1033-1380-crop-1612320241997-63747950220924.jpg', 1, NULL, NULL, NULL, '2021-04-21 11:04:35', NULL),
+(5, 'CES 2021: TCL trình làng hàng loạt các sản phẩm đa dạng hóa mới nhất: TV, Audio, thiết bị di động và', 'TCL tiếp tục đổi mới và mang đến cho người tiêu dùng các thiết bị gia dụng thông minh được kết nối v', 'TCL Electronics - một trong những thương hiệu nổi tiếng trong ngành công nghiệp TV toàn cầu và là công ty điện tử tiêu dùng hàng đầu với sứ mệnh làm cho cuộc sống thông minh hơn thông qua công nghệ tiên tiến, đã giới thiệu đến CES 2021 năm nay TCL Mini-LED, QLED và 4K HDR TV, âm thanh và thiết bị gia dụng mới nhất của mình, được cung cấp dựa trên chiến lược AIxIoT hướng tới tương lai.\r\n\r\nCES 2021: TCL trình làng hàng loạt các sản phẩm đa dạng hóa mới nhất: TV, Audio, thiết bị di động và gia dụng thông minh - Ảnh 1.\r\n\r\nTruy cập https://www.tcl.com/ces2021.html để tìm hiểu thêm về TCL tại CES2021.\r\n\r\nPremium Mini-LED, QLED và TV 4K HDR\r\n\r\nNăm nay, TCL sẽ giới thiệu ba chiếc TV nổi bật là Mini-LED, QLED và 4K HDR, vượt xa hiệu suất hình ảnh thông thường và cung cấp một loạt các tính năng với phong cách sống toàn diện cho các thế hệ mới. Những người tham dự CES thông qua giải pháp số năm nay đã được giới thiệu dòng TV mới: TCL 4K Mini-LED C825, TCL 4K QLED TV C725, TV TCL 4K HDR P725 – nhữ', '1610593132868-38-0-931-1430-crop-1610593137968-63746223608659.jpg', 1, NULL, NULL, NULL, '2021-04-21 11:04:35', NULL),
+(6, 'LG công bố TV sử dụng công nghệ QNED, sở hữu dàn đèn LED tiên tiến lên tới 30.000 chiếc', 'Công nghệ mới của LG yêu cầu người mua cẩn thận hơn khi đi mua TV, tránh trường hợp nhầm lẫn sang QL', 'Nhắc tới tên LG khi nói chuyện về TV, ta dễ dàng tưởng tới OLED, nhưng ngay trước khi năm 2020, LG đã làm chúng ta ngạc nhiên với một công nghệ màn hình mới. Giống với những gì các nhà sản xuất khác (như TCL đã đang và Samsung sắp thực hiện), LG chuẩn bị ứng dụng công nghệ Mini LED cho dòng TV chất lượng cao của mình, là các thiết bị màn 4K và LCD 8K sẽ ra mắt trong năm tới.\r\n\r\nLG nói rằng công nghệ Mini LED cho phép họ “có bước nhảy vọt về chất lượng hình ảnh trên các màn LCD”. TV sử dụng màn LCD tiên tiến nhất thị trường sử dụng “công nghệ làm tối cục bộ toàn chuỗi”, với một dãy các đèn nền LED cung cấp ánh sáng tạo thành hình ảnh. \r\n\r\nLG công bố TV sử dụng công nghệ QNED, sở hữu dàn đèn LED tiên tiến lên tới 30.000 chiếc - Ảnh 1.\r\n\r\nĐúng với cái tên của nó, đèn Mini LED lại là những đèn LED nhỏ hơn (nhưng sẽ nhiều đèn trên mỗi đơn vị diện tích hơn,) tạo nên độ tương phản tốt cho màn hình khi việc kiểm soát ánh sáng cục bộ chi tiết hơn trước.\r\n\r\nLG nói hệ thống đèn nền mới của họ “có', 'photo1609324452016-16093244521681007581978.jpg', 1, NULL, NULL, NULL, '2021-04-21 11:04:35', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL COMMENT 'Id của user trong trường hợp đã login và đặt hàng, là khóa ngoại liên kết với bảng users',
+  `fullname` varchar(100) DEFAULT NULL COMMENT 'Tên khách hàng',
+  `address` varchar(100) DEFAULT NULL COMMENT 'Địa chỉ khách hàng',
+  `mobile` int(11) DEFAULT NULL COMMENT 'SĐT khách hàng',
+  `email` varchar(100) DEFAULT NULL COMMENT 'Email khách hàng',
+  `note` text DEFAULT NULL COMMENT 'Ghi chú từ khách hàng',
+  `price_total` int(11) DEFAULT NULL COMMENT 'Tổng giá trị đơn hàng',
+  `payment_status` tinyint(2) DEFAULT NULL COMMENT 'Trạng thái đơn hàng: 0 - Chưa thành toán, 1 - Đã thành toán',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() COMMENT 'Ngày tạo đơn',
+  `updated_at` datetime DEFAULT NULL COMMENT 'Ngày cập nhật cuối'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `user_id`, `fullname`, `address`, `mobile`, `email`, `note`, `price_total`, `payment_status`, `created_at`, `updated_at`) VALUES
+(1, NULL, 'du', 'thanh hóa', 985673110, NULL, 'baby', 0, 0, '2020-09-19 12:31:57', NULL),
+(2, NULL, 'du', 'thanh hóa', 985673110, NULL, 'baby', 0, 0, '2020-09-19 12:32:30', NULL),
+(3, NULL, 'du', 'thanh hóa', 985673110, NULL, 'baby', 0, 0, '2020-09-19 12:54:16', NULL),
+(4, NULL, 'du', 'thanh hóa', 985673110, NULL, 'baby', 0, 0, '2020-09-19 12:54:31', NULL),
+(5, NULL, 'du', 'thanh hóa', 985673110, NULL, 'pijpjip', 12, 0, '2020-09-19 12:55:54', NULL),
+(6, NULL, 'du', 'thanh hóa', 985673110, NULL, 'pijpjip', 12, 0, '2020-09-19 13:12:02', NULL),
+(7, NULL, 'du', 'thanh hóa', 985673110, NULL, 'pijpjip', 12, 0, '2020-09-19 13:16:51', NULL),
+(8, NULL, 'du', 'thanh hóa', 985673110, NULL, 'pijpjip', 12, 0, '2020-09-19 13:17:57', NULL),
+(9, NULL, 'du', 'thanh hóa', 985673110, NULL, 'pijpjip', 12, 0, '2020-09-19 13:18:24', NULL),
+(10, NULL, 'du', 'thanh hóa', 985673110, NULL, 'pijpjip', 12, 0, '2020-09-19 13:21:00', NULL),
+(11, NULL, 'du', 'thanh hóa', 985673110, NULL, 'pijpjip', 12, 0, '2020-09-19 13:25:27', NULL),
+(12, NULL, 'du', 'thanh hóa', 985673110, NULL, 'pijpjip', 12, 0, '2020-09-19 13:26:30', NULL),
+(13, NULL, 'du', 'thanh hóa', 985673110, NULL, 'pijpjip', 12, 0, '2020-09-19 13:38:12', NULL),
+(14, NULL, 'du', 'thanh hóa', 985673110, NULL, 'fewfw', 12, 0, '2020-09-19 13:42:35', NULL),
+(15, NULL, 'du', 'thanh hóa', 985673110, NULL, 'qfef', 12, 0, '2020-09-19 13:43:37', NULL),
+(16, NULL, 'du', 'thanh hóa', 985673110, NULL, 'dưef', 12, 0, '2020-09-19 13:47:00', NULL),
+(17, NULL, 'du', 'thanh hóa', 985673110, NULL, 'cds', 12, 0, '2020-09-19 13:55:46', NULL),
+(18, NULL, 'du', 'thanh hóa', 985673110, NULL, 'rferhtyjtyjyj', 38290000, 0, '2021-04-03 03:50:53', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_details`
+--
+
+CREATE TABLE `order_details` (
+  `order_id` int(11) DEFAULT NULL COMMENT 'Id của order tương ứng, là khóa ngoại liên kết với bảng orders',
+  `product_id` int(11) DEFAULT NULL COMMENT 'Id của product tương ứng, là khóa ngoại liên kết với bảng products',
+  `quantity` int(11) DEFAULT NULL COMMENT 'Số sản phẩm đã đặt'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `order_details`
+--
+
+INSERT INTO `order_details` (`order_id`, `product_id`, `quantity`) VALUES
+(4, 22, 2),
+(5, 22, 3),
+(5, 23, 1),
+(6, 22, 3),
+(6, 23, 1),
+(7, 22, 3),
+(7, 23, 1),
+(8, 22, 3),
+(8, 23, 1),
+(9, 22, 3),
+(9, 23, 1),
+(10, 22, 3),
+(10, 23, 1),
+(11, 22, 3),
+(11, 23, 1),
+(12, 22, 3),
+(12, 23, 1),
+(13, 22, 3),
+(13, 23, 1),
+(14, 22, 3),
+(14, 23, 1),
+(15, 22, 3),
+(15, 23, 1),
+(16, 22, 3),
+(16, 23, 1),
+(17, 22, 3),
+(17, 23, 1),
+(18, 28, 2),
+(18, 27, 2),
+(18, 30, 1);
 
 -- --------------------------------------------------------
 
@@ -84,9 +264,66 @@ INSERT INTO `products` (`id`, `category_id`, `title`, `avatar`, `price`, `amount
 (57, 9, 'Smart Tivi Sony 4K 77 inch 77C9PTA', 'tivisony-10.jpg', 143900000, 25, 'Smart Tivi OLED LG 4K 77 inch 77C9PTA cho màu sắc sặc sỡ chính xác đến tuyệt đối.\r\nMàn hình OLED, độ', '<h2>Th&ocirc;ng số kỹ thuật</h2>\r\n\r\n<ul>\r\n	<li>Loại Tivi<a href=\"https://meta.vn/tv-lg-c3432?specs=112.64053\" target=\"_blank\">OLED</a></li>\r\n	<li>USB<a href=\"https://meta.vn/tv-lg-c3432?specs=1105.48624\" target=\"_blank\">3 cổng</a></li>\r\n	<li>C&ocirc;ng suất loa<a href=\"https://meta.vn/tv-lg-c3432?specs=1536.49422\" target=\"_blank\">40W</a></li>\r\n	<li>Bluetooth<a href=\"https://meta.vn/tv-lg-c3432?specs=2327.46530\" target=\"_blank\">C&oacute;</a></li>\r\n	<li>Cổng HDMI<a href=\"https://meta.vn/tv-lg-c3432?specs=2432.48623\" target=\"_blank\">4 cổng</a></li>\r\n	<li>Cổng AV<a href=\"https://meta.vn/tv-lg-c3432?specs=2433.49384\" target=\"_blank\">Cổng composite v&agrave; cổng Component</a></li>\r\n	<li>Remote th&ocirc;ng minh<a href=\"https://meta.vn/tv-lg-c3432?specs=2434.63499\" target=\"_blank\">C&oacute; Magic Remote</a></li>\r\n	<li>Điều khiển tivi bằng điện thoại<a href=\"https://meta.vn/tv-lg-c3432?specs=2435.48603\" target=\"_blank\">LG TV Plus</a></li>\r\n	<li>Độ ph&acirc;n giải<a href=\"https://meta.vn/tv-lg-c3432?specs=85.46162\" target=\"_blank\">4K</a></li>\r\n	<li>Kết nối<a href=\"https://meta.vn/tv-lg-c3432?specs=115.49545\" target=\"_blank\">LAN, Wifi</a></li>\r\n	<li>K&iacute;ch thước m&agrave;n h&igrave;nh<a href=\"https://meta.vn/tv-lg-c3432?specs=113.49845\" target=\"_blank\">77 inch</a></li>\r\n	<li>C&ocirc;ng suất<a href=\"https://meta.vn/tv-lg-c3432?specs=15.49846\" target=\"_blank\">655W</a></li>\r\n	<li>T&iacute;ch hợp đầu thu KTS<a href=\"https://meta.vn/tv-lg-c3432?specs=120.48843\" target=\"_blank\">DVB-C, DVB-T2, DVB-T2C</a></li>\r\n	<li>C&ocirc;ng nghệ h&igrave;nh ảnh<a href=\"https://meta.vn/tv-lg-c3432?specs=114.66377\" target=\"_blank\">4K Cinema HDR</a>,&nbsp;<a href=\"https://meta.vn/tv-lg-c3432?specs=114.54669\" target=\"_blank\">4K Upscaler</a>,&nbsp;<a href=\"https://meta.vn/tv-lg-c3432?specs=114.66186\" target=\"_blank\">AI Brightness</a>,&nbsp;<a href=\"https://meta.vn/tv-lg-c3432?specs=114.10235\" target=\"_blank\">Dolby Vision</a>,&nbsp;<a href=\"https://meta.vn/tv-lg-c3432?specs=114.54668\" target=\"_blank\">HDR10 Pro</a>,&nbsp;<a href=\"https://meta.vn/tv-lg-c3432?specs=114.54091\" target=\"_blank\">HLG</a>,&nbsp;<a href=\"https://meta.vn/tv-lg-c3432?specs=114.66182\" target=\"_blank\">Ultra Luminance PRO</a>,&nbsp;<a href=\"https://meta.vn/tv-lg-c3432?specs=114.66379\" target=\"_blank\">Xử l&yacute; h&igrave;nh ảnh AI chuy&ecirc;n s&acirc;u</a></li>\r\n	<li>Tiện &iacute;ch<a href=\"https://meta.vn/tv-lg-c3432?specs=2672.66132\" target=\"_blank\">AI ThinQ</a>,&nbsp;<a href=\"https://meta.vn/tv-lg-c3432?specs=2672.65954\" target=\"_blank\">Chiếu m&agrave;n h&igrave;nh điện thoại l&ecirc;n tivi</a>,&nbsp;<a href=\"https://meta.vn/tv-lg-c3432?specs=2672.65952\" target=\"_blank\">T&igrave;m kiếm bằng giọng n&oacute;i</a>,&nbsp;<a href=\"https://meta.vn/tv-lg-c3432?specs=2672.65955\" target=\"_blank\">Trợ l&iacute; ảo Google Assistant</a></li>\r\n	<li>C&ocirc;ng nghệ &acirc;m thanh<a href=\"https://meta.vn/tv-lg-c3432?specs=122.54103\" target=\"_blank\">AI Sound</a>,&nbsp;<a href=\"https://meta.vn/tv-lg-c3432?specs=122.54104\" target=\"_blank\">Chế độ &acirc;m thanh v&ograve;m Dolby Surround</a>,&nbsp;<a href=\"https://meta.vn/tv-lg-c3432?specs=122.54107\" target=\"_blank\">Clear Voice III</a>,&nbsp;<a href=\"https://meta.vn/tv-lg-c3432?specs=122.54105\" target=\"_blank\">Dolby Atmos</a>,&nbsp;<a href=\"https://meta.vn/tv-lg-c3432?specs=122.54106\" target=\"_blank\">Ultra Surround</a></li>\r\n	<li>Hệ điều h&agrave;nh<a href=\"https://meta.vn/tv-lg-c3432?specs=136.48578\" target=\"_blank\">WebOS 4.5</a></li>\r\n	<li>Số lượng loa<a href=\"https://meta.vn/tv-lg-c3432?specs=154.1745\" target=\"_blank\">2 loa</a></li>\r\n	<li>Cổng xuất &acirc;m thanh<a href=\"https://meta.vn/tv-lg-c3432?specs=2793.65320\" target=\"_blank\">Cổng Optical</a>,&nbsp;<a href=\"https://meta.vn/tv-lg-c3432?specs=2793.65259\" target=\"_blank\">HDMI ARC</a>,&nbsp;<a href=\"https://meta.vn/tv-lg-c3432?specs=2793.65257\" target=\"_blank\">Jack loa 3.5mm</a></li>\r\n</ul>\r\n', 1, '', '', '', '2021-04-14 09:17:10', NULL),
 (58, 9, 'Tivi Sony Smart 4K KD-55X7000G (Mẫu 2021) - 55 inch', 'tivisony-9.jpg', 12490000, 15, 'Điểm nổi bật của Tivi Sony Smart 4K KD-55X7000G\r\nSmart Tivi Sony 4K KD-55X7000G có nhiều ưu điểm nổi', '<h2>Th&ocirc;ng số kỹ thuật</h2>\r\n\r\n<ul>\r\n	<li>Loại Tivi<a href=\"https://meta.vn/tv-sony-c3431?specs=112.1508\" target=\"_blank\">LED</a></li>\r\n	<li>USB<a href=\"https://meta.vn/tv-sony-c3431?specs=1105.48624\" target=\"_blank\">3 cổng</a></li>\r\n	<li>C&ocirc;ng suất loa<a href=\"https://meta.vn/tv-sony-c3431?specs=1536.27340\" target=\"_blank\">2 Loa&nbsp;<em>(20W)</em></a></li>\r\n	<li>Cổng HDMI<a href=\"https://meta.vn/tv-sony-c3431?specs=2432.48599\" target=\"_blank\">3 cổng</a></li>\r\n	<li>Cổng AV<a href=\"https://meta.vn/tv-sony-c3431?specs=2433.48612\" target=\"_blank\">Cổng Composite</a></li>\r\n	<li>Điều khiển tivi bằng điện thoại<a href=\"https://meta.vn/tv-sony-c3431?specs=2435.48640\" target=\"_blank\">C&oacute;</a></li>\r\n	<li>Model/Mẫu<a href=\"https://meta.vn/tv-sony-c3431?specs=2597.55396\" target=\"_blank\">2019</a></li>\r\n	<li>Độ ph&acirc;n giải<a href=\"https://meta.vn/tv-sony-c3431?specs=85.46162\" target=\"_blank\">4K</a></li>\r\n	<li>Kết nối<a href=\"https://meta.vn/tv-sony-c3431?specs=115.1746\" target=\"_blank\">USB, Cổng Internet LAN, Wifi, HDMI</a></li>\r\n	<li>K&iacute;ch thước m&agrave;n h&igrave;nh<a href=\"https://meta.vn/tv-sony-c3431?specs=113.1528\" target=\"_blank\">55 inch</a></li>\r\n	<li>C&ocirc;ng suất<a href=\"https://meta.vn/tv-sony-c3431?specs=15.60217\" target=\"_blank\">173W</a></li>\r\n	<li>Nguồn điện &aacute;p<a href=\"https://meta.vn/tv-sony-c3431?specs=73.66077\" target=\"_blank\">AC 110 - 240V, 50 / 60Hz</a></li>\r\n	<li>T&iacute;ch hợp đầu thu KTS<a href=\"https://meta.vn/tv-sony-c3431?specs=120.1790\" target=\"_blank\">DVB-T/T2</a></li>\r\n	<li>Tần số qu&eacute;t<a href=\"https://meta.vn/tv-sony-c3431?specs=119.1616\" target=\"_blank\">50Hz</a></li>\r\n	<li>C&ocirc;ng nghệ h&igrave;nh ảnh<a href=\"https://meta.vn/tv-sony-c3431?specs=114.48638\" target=\"_blank\">4K X-Reality PRO</a>,&nbsp;<a href=\"https://meta.vn/tv-sony-c3431?specs=114.2062\" target=\"_blank\">C&ocirc;ng nghệ TRILUMINOS Display</a>,&nbsp;<a href=\"https://meta.vn/tv-sony-c3431?specs=114.48628\" target=\"_blank\">Dynamic Contrast Enhancer</a>,&nbsp;<a href=\"https://meta.vn/tv-sony-c3431?specs=114.54067\" target=\"_blank\">HDR10</a>,&nbsp;<a href=\"https://meta.vn/tv-sony-c3431?specs=114.54091\" target=\"_blank\">HLG</a>,&nbsp;<a href=\"https://meta.vn/tv-sony-c3431?specs=114.48639\" target=\"_blank\">Live Colour</a>,&nbsp;<a href=\"https://meta.vn/tv-sony-c3431?specs=114.66573\" target=\"_blank\">Motionflow&trade; XR 200</a></li>\r\n	<li>Tiện &iacute;ch<a href=\"https://meta.vn/tv-sony-c3431?specs=2672.65954\" target=\"_blank\">Chiếu m&agrave;n h&igrave;nh điện thoại l&ecirc;n tivi</a></li>\r\n	<li>C&ocirc;ng nghệ &acirc;m thanh<a href=\"https://meta.vn/tv-sony-c3431?specs=122.1921\" target=\"_blank\">S-Force Front Surround</a>,&nbsp;<a href=\"https://meta.vn/tv-sony-c3431?specs=122.1899\" target=\"_blank\">Clear Phase</a>,&nbsp;<a href=\"https://meta.vn/tv-sony-c3431?specs=122.1585\" target=\"_blank\">ClearAudio+</a>,&nbsp;<a href=\"https://meta.vn/tv-sony-c3431?specs=122.48723\" target=\"_blank\">Digital Sound Enhancement Engine (DSEE)</a>,&nbsp;<a href=\"https://meta.vn/tv-sony-c3431?specs=122.54652\" target=\"_blank\">Dolby Audio</a>,&nbsp;<a href=\"https://meta.vn/tv-sony-c3431?specs=122.66019\" target=\"_blank\">DTS</a></li>\r\n	<li>Hệ điều h&agrave;nh<a href=\"https://meta.vn/tv-sony-c3431?specs=136.5274\" target=\"_blank\">Linux</a></li>\r\n	<li>Số lượng loa<a href=\"https://meta.vn/tv-sony-c3431?specs=154.1745\" target=\"_blank\">2 loa</a></li>\r\n	<li>Cổng xuất &acirc;m thanh<a href=\"https://meta.vn/tv-sony-c3431?specs=2793.65320\" target=\"_blank\">Cổng Optical</a>,&nbsp;<a href=\"https://meta.vn/tv-sony-c3431?specs=2793.65259\" target=\"_blank\">HDMI ARC</a>,&nbsp;<a href=\"https://meta.vn/tv-sony-c3431?specs=2793.65257\" target=\"_blank\">Jack loa 3.5mm</a></li>\r\n</ul>\r\n\r\n<h2>Th&ocirc;ng tin chung</h2>\r\n\r\n<ul>\r\n	<li>K&iacute;ch thước<a href=\"https://meta.vn/tv-sony-c3431?specs=29.48637\" target=\"_blank\">C&oacute; ch&acirc;n&nbsp;<em>(124.1cm x 78.5cm x 33.6cm)</em></a>,&nbsp;<a href=\"https://meta.vn/tv-sony-c3431?specs=29.48636\" target=\"_blank\">Kh&ocirc;ng ch&acirc;n&nbsp;<em>(124.1cm x 72.1cm x 7.9cm)</em></a></li>\r\n	<li>Trọng lượng sản phẩm<a href=\"https://meta.vn/tv-sony-c3431?specs=35.1257\" target=\"_blank\">C&oacute; ch&acirc;n&nbsp;<em>(16,5kg)</em></a>,&nbsp;<a href=\"https://meta.vn/tv-sony-c3431?specs=35.48635\" target=\"_blank\">Kh&ocirc;ng ch&acirc;n&nbsp;<em>(15.4kg)</em></a></li>\r\n	<li>Thương hiệu<a href=\"https://meta.vn/tv-sony-c3431?specs=69.1199\" target=\"_blank\">Nhật Bản</a></li>\r\n	<li>Sản xuất tại<a href=\"https://meta.vn/tv-sony-c3431?specs=68.1115\" target=\"_blank\">Malaysia</a></li>\r\n	<li>Bảo h&agrave;nh<a href=\"https://meta.vn/tv-sony-c3431?specs=67.1017\" target=\"_blank\">24 th&aacute;ng</a></li>\r\n</ul>\r\n', 1, '', '', '', '2021-04-14 09:18:51', NULL);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(100) DEFAULT NULL COMMENT 'Tên đăng nhập',
+  `password` varchar(100) DEFAULT NULL COMMENT 'Mật khẩu đăng nhập',
+  `first_name` varchar(100) DEFAULT NULL COMMENT 'Fist name',
+  `last_name` varchar(100) DEFAULT NULL COMMENT 'Last name',
+  `phone` int(11) DEFAULT NULL COMMENT 'SĐT user',
+  `address` varchar(100) DEFAULT NULL COMMENT 'Địa chỉ user',
+  `email` varchar(100) DEFAULT NULL COMMENT 'Email của user',
+  `avatar` varchar(100) DEFAULT NULL COMMENT 'File ảnh đại diện',
+  `jobs` varchar(100) DEFAULT NULL COMMENT 'Nghề nghiệp',
+  `last_login` datetime DEFAULT NULL COMMENT 'Lần đăng nhập gần đây nhất',
+  `facebook` varchar(100) DEFAULT NULL COMMENT 'Link facebook',
+  `status` tinyint(3) DEFAULT 0 COMMENT 'Trạng thái danh mục: 0 - Inactive, 1 - Active',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() COMMENT 'Ngày tạo',
+  `updated_at` datetime DEFAULT NULL COMMENT 'Ngày cập nhật cuối'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `first_name`, `last_name`, `phone`, `address`, `email`, `avatar`, `jobs`, `last_login`, `facebook`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '2020-08-29 09:20:57', NULL),
+(3, 'truongdu1107@gmail.com', '915d1427fdf8a4e9cdc2df8a8cb727a3', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2021-03-05 07:58:29', NULL),
+(4, 'truongdu0212@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Trương', 'Dụ', 985673110, 'thanh hóa', 'truongdu0212@gmail.com', '1618451291-user-sony2.jpg', '', NULL, '', 1, '2021-04-15 01:48:11', NULL);
+
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `customers`
+--
+ALTER TABLE `customers`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `news`
+--
+ALTER TABLE `news`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `products`
@@ -96,14 +333,50 @@ ALTER TABLE `products`
   ADD KEY `category_id` (`category_id`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `customers`
+--
+ALTER TABLE `customers`
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `news`
+--
+ALTER TABLE `news`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
