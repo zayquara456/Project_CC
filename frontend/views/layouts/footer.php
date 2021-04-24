@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="image-footer-wrap col-md-3">
-                LOGO
+                <image width="120px" src="\backend\assets\images\minilogo.png">
             </div>
             <div class="address-footer-wrap col-md-6">
                 <strong>Thông tin liên hệ</strong>
