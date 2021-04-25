@@ -101,7 +101,7 @@ class Pagination
     $current_page = $this->getCurrentPage();
     $total_page = $this->getTotalPage();
     if ($current_page < $total_page) {
-      $controller = $this->params['controller'];
+      // $controller = $this->params['controller'];c
       $danhmuc = $this->params['cateid'];
       $page = $current_page + 1;
       $next_url =
@@ -122,18 +122,17 @@ class Pagination
       return '';
     }
 
-    $data .= "<div class='product container'><ul class='pagination'>";
+    $data .= "<ul id='pagging'>";
     //gắn link Prev vào đầu tiên
     $prev_link = $this->getPrevPage();
     $data .= $prev_link;
 
     //tạo các biến controller, action lấy từ thuộc tính params
-    $controller = $this->params['controller'];
+    // $controller = $this->params['controller'];
     $danhmuc = $this->params['cateid'];
 
     //nếu như hiển thị phân trang theo kiểu ..
     // -> full_mode = FALSE
-    $full_mode = $this->params['full_mode'];
     if ($this->params['full_mode'] == FALSE) {
       for ($page = 1; $page <= $total_page; $page++) {
         $current_page = $this->getCurrentPage();
@@ -146,7 +145,7 @@ class Pagination
         else if ($page == $current_page) {
           $data .= "<li class='active'><a href=''>$page</a></li>";
         }
-//        còn nếu hoặc là trang 2, trang 3 hoặc trang tổng - 1, trang tổng -2 thì hiển thị ..
+        //còn nếu hoặc là trang 2, trang 3 hoặc trang tổng - 1, trang tổng -2 thì hiển thị ..
         else if (in_array($page, [$current_page - 2, $current_page - 3, $current_page + 2, $current_page + 3])){
           $data .= "<li><a href=''>...</a></li>";
         }
@@ -159,9 +158,7 @@ class Pagination
       //để hiển thị ra các trang
       for ($page = 1; $page <= $total_page; $page++) {
         $current_page = $this->getCurrentPage();
-        //nếu trang hiện tại trùng với với số lần lặp hiện
-        //tại thì sẽ thêm class active và ko gắn link
-//                cho trang hiện tại
+        //nếu trang hiện tại trùng với với số lần lặp hiện tại thì sẽ thêm class active và ko gắn link cho trang hiện tại
         if ($current_page == $page) {
           $data .= "<li class='active'><a href='#'>$page</a></li>";
         } else {
@@ -172,11 +169,10 @@ class Pagination
       }
     }
 
-
     //gắn link NExt vào cuối của cấu trúc phân trang
     $next_link = $this->getNextPage();
     $data .= $next_link;
-    $data .= "</ul></div>";
+    $data .= "</ul>";
     return $data;
   }
 }

@@ -16,4 +16,12 @@ class News extends Model {
     $news = $obj->fetchAll(PDO::FETCH_ASSOC);
     return $news;
   }
+
+  public function getNewsById($id){
+    $sql = "SELECT * FROM news WHERE `status` = 1 AND news.id = $id";
+    $obj = $this->connection->prepare($sql);
+    $obj->execute();
+    $news = $obj->fetchAll(PDO::FETCH_ASSOC);
+    return $news;
+  }
 }

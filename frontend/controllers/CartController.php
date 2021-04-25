@@ -57,7 +57,7 @@ class CartController extends Controller
         // print_r($_POST);
         // echo "</pre>";
         // Xử lý Cập nhật giỏ hàngs
-        if (isset($_POST['submit'])) {
+        if (isset($_POST['updateCart'])) {
             //Xử lý thêm trường hợp nếu nhập số lượng là số âm thì sẽ
             //ko xủ lý update
             foreach ($_SESSION['cart'] AS $product_id => $cart) {
@@ -84,9 +84,6 @@ class CartController extends Controller
 
     //Phương thức xóa sản phẩm khỏi Giỏ
     public function delete() {
-        echo "<pre>";
-        print_r($_GET);
-        echo "</pre>";
         //Do trong rewrite đã có regex bắt buộc id phải là số, nên ko
         //cần validate bằng PHP nữa
         $product_id = $_GET['id'];
@@ -97,7 +94,13 @@ class CartController extends Controller
         if (empty($_SESSION['cart'])) {
             unset($_SESSION['cart']);
         }
-        $_SESSION['success'] = "Xóa sp $product_id thành công";
+        $_SESSION['success'] = "Xóa sản phẩm có id = $product_id thành công";
+        header("Location: gio-hang-cua-ban.html");
+        exit();
+    }
+
+    public function deleteAll(){
+        unset($_SESSION['cart']);
         header("Location: gio-hang-cua-ban.html");
         exit();
     }

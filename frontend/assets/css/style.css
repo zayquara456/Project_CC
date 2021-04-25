@@ -239,7 +239,7 @@ h1, h2, h3, h4, h5, h6 {
 [1. Body]
 *------------------------------------------------------------------*/
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family:Arial, Helvetica, sans-serif;
     font-weight: 400;
     font-size: 15px;
     line-height: 1.5;
@@ -4372,7 +4372,7 @@ a.link_pg {
 }
 
 .news-content-wrap {
-    padding: 15px;
+    padding: 15px 0px;
     background: #fff;
 }
 
@@ -5550,4 +5550,83 @@ span.team-title {
         height: 18vw;
         margin: 5px auto;
     }
+}
+
+#area_pagging{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+    margin-right: 180px;
+}
+
+ul#pagging{
+    padding-left: 0px;
+    display: flex;
+}
+
+ul#pagging li{
+    list-style-type: none;
+    margin-left: 5px;
+}
+ul#pagging li:first-child{
+    list-style-type: none;
+    margin-left: 0px;
+}
+
+ul#pagging li a{
+    padding: 8px 15px;
+    border: 1px solid#00000052;
+    border-radius: 5px;
+    display: block;
+}
+
+.active a{
+    color: #fff;
+    background: #ff3b00;
+}
+
+.content{
+    margin: 0px auto;
+    /* border: 1px solid#000; */
+    width: 750px;
+}
+.img-730px{
+    width: auto;
+}
+
+.txt-left{
+    text-align: left;
+}
+
+span.new-image-content img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.margin-top-bottom-10{
+    display: block; 
+    margin-top: 10px; 
+    margin-bottom: 10px
+}
+
+#scroll{
+    background-color: #07a5ae;
+    border-radius: 50%;
+    box-shadow: 0 3px 2px 0 rgb(0 0 0 / 12%);
+    color: #fff;
+    display: block;
+    font-size: 18px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    width: 40px;
+    position: fixed;
+    bottom: 30px;
+    right: 70px;
+    cursor: pointer;
+}
+
+.d-none{
+    display: none;
 }

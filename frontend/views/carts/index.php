@@ -5,7 +5,7 @@ require_once 'helpers/Helper.php';
 <div class="timeline-items container">
     <h2>Giỏ hàng của bạn</h2>
     <?php if (isset($_SESSION['cart'])): ?>
-        <form action="" method="post">
+        <form action="" method="POST">
             <table class="table table-bordered">
                 <tbody>
                 <tr>
@@ -83,18 +83,23 @@ require_once 'helpers/Helper.php';
                 </tr>
                 <tr>
                     <td colspan="5" class="product-payment">
-                        <input type="submit" name="submit" value="Cập nhật lại giá" class="btn btn-primary">
-                        <a href="thanh-toan.html" class="btn btn-success">Đến trang thanh toán</a>
+                        <a href="xoa-tat-ca.html" class="btn btn-danger">Xóa tất cả</a>
+                        <span>
+                            <input type="submit" name="updateCart" value="Cập nhật lại giá" class="btn btn-primary">
+                            <a href="thanh-toan.html" class="btn btn-success">Đến trang thanh toán</a>
+                        </span>
                     </td>
                 </tr>
                 </tbody>
             </table>
         </form>
     <?php else: ?>
-        <h2>Giỏ hàng trống</h2>
-        <a href="index.php" class="btn btn-primary">
-            Quay lại trang chủ để mua hàng
-        </a>
+        <div style="height: 400px">
+            <h2>Giỏ hàng trống</h2>
+            <a href="index.php" class="btn btn-primary">
+                Quay lại trang chủ để mua hàng
+            </a>
+        </div>
     <?php endif; ?>
 </div>
 <!--Timeline items end -->

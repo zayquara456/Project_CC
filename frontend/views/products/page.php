@@ -34,6 +34,8 @@ require_once 'helpers/Helper.php';?>
 		  <?php endif; ?>
           </div>
     </div>
-	<?php echo $pages; ?>
+    <div id="area_pagging">
+        <?php echo $pages; ?>
+    </div>
 </div>
 <!--    END PRODUCT-->

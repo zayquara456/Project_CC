@@ -22,9 +22,9 @@
                         <a href="#" class="link-icon-laguage material-button submenu-toggle">
                             <img src="assets/images/icon-flag-vn.png" class="icon-language">
                         </a>
-                        <a href="#" class="link-icon-laguage material-button submenu-toggle">
+                        <!-- <a href="#" class="link-icon-laguage material-button submenu-toggle">
                             <img src="/template/camping1/assets/images/icon-flag-en.png" class="icon-language">
-                        </a>
+                        </a> -->
                     </li>
                     <li>
                         <a href="gio-hang-cua-ban.html" class="cart-link">
@@ -72,7 +72,7 @@
             <ul class="header-navigation" data-show-menu-on-mobile>
                 <li>
                     <a href="index.php" class="home-link material-button submenu-toggle">
-                        <image width="120px" src="\backend\assets\images\minilogo.png">
+                        <image width="120px" src="..\backend\assets\images\minilogo.png">
                     </a>
 
                 </li>
