@@ -26,17 +26,26 @@ $(document).ready(function () {
                 //các thông tin liên quan đến gọi ajax
                 //Đã có sẵn 1 class = ajax-message đang ẩn để
                 //chứa các message Thêm giỏ hàng thành công
-                $('.ajax-message')
-                .html('Thêm vào giỏ thành công')
-                .addClass('ajax-message-active');
+                // $('.ajax-message')
+                // .html('Thêm vào giỏ thành công')
+                // .addClass('ajax-message-active');
                 //Sử dụng hàm setTimeout để set thời gian chuyển
                 //đổi cho 1 selector
                 //Chờ 3s sẽ ẩn message đi
-                setTimeout(function(){
-                    $('.ajax-message').removeClass('ajax-message-active')
-                }, 3000);
+                // setTimeout(function(){
+                //     $('.ajax-message').removeClass('ajax-message-active')
+                // }, 3000);
                 //Xử lý update số lượng trong giỏ
                 //Lấy nội dung của class cart-amount
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Thêm vào giỏ thành công',
+                    showConfirmButton: false,
+                    width: 500,
+                    height: 150,
+                    timer: 1500
+                });
                 var cart_total = $('.cart-amount').html();
                 cart_total++;
                 //Set lại nội dung mới cho class cart-amount

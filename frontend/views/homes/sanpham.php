@@ -7,6 +7,7 @@ require_once 'helpers/Helper.php';
     <div class="product container">
       <?php if (!empty($danhmuc)): ?>
 	   <?php foreach ($danhmuc AS $dm):
+	   $max = 0;
 	    $dssp = "dssp/" . $dm['id'] . ".html";?>
           <h1 class="post-list-title">
               <a href="danh-sach-san-pham.html" class="link-category-item"><?php echo $dm['name'] ?></a>
@@ -15,8 +16,9 @@ require_once 'helpers/Helper.php';
             <?php foreach ($productfill AS $product):
               $slug = Helper::getSlug($product['title']);
               $product_link = "san-pham/$slug/" . $product['id'] . ".html";
-                $product_cart_add = "them-vao-gio-hang/" . $product['id'] . ".html"; if ($product['category_id'] == $dm['id']) {
-				?>
+                $product_cart_add = "them-vao-gio-hang/" . $product['id'] . ".html";
+				if ($product['category_id'] == $dm['id'] && $max < 8) {
+					$max++; ?>
                 <div class="service-link col-md-3 col-sm-6 col-xs-12">
                     <a href="<?php echo $product_link; ?>">
                         <img class="secondary-img img-responsive" title="<?php echo $product['title'] ?>"

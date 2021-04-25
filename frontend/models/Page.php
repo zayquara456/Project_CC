@@ -2,23 +2,6 @@
 require_once 'models/Model.php';
 class Product extends Model {
  
- public function getProductInCate($a) {
- 
-    $sql_select = "SELECT products.*, categories.name 
-          AS category_name FROM products
-          INNER JOIN categories ON products.category_id = categories.id
-          WHERE products.status = 1 AND products.category_id = $a";
-    $obj_select = $this->connection->prepare($sql_select);
-    $obj_select->execute();
-
-    $products = $obj_select->fetchAll(PDO::FETCH_ASSOC);
-    return $products;
-  }
-  /**
-   * Lấy thông tin sản phẩm theo id
-   * @param $id
-   * @return mixed
-   */
    public function getByNameCate($a)
   {
     $obj_select = $this->connection
@@ -28,5 +11,37 @@ class Product extends Model {
     $product =  $obj_select->fetch(PDO::FETCH_ASSOC);
     return $product;
   }
+	
+	public function getAllPagination($arr_params,$a)
+    {
+        $limit = $arr_params['limit'];
+        $page = $arr_params['page'];
+        $start = ($page - 1) * $limit;
+        $obj_select = $this->connection
+            ->prepare("SELECT products.*, categories.name AS category_name FROM products 
+                        INNER JOIN categories ON categories.id = products.category_id
+                        WHERE products.category_id = $a
+                        ORDER BY products.updated_at DESC, products.created_at DESC
+                        LIMIT $start, $limit
+                        ");
+
+        $arr_select = [];
+        $obj_select->execute($arr_select);
+        $products = $obj_select->fetchAll(PDO::FETCH_ASSOC);
+
+        return $products;
+    }
+
+    /**
+     * Tính tổng số bản ghi đang có trong bảng products
+     * @return mixed
+     */
+    public function countTotal($a)
+    {
+        $obj_select = $this->connection->prepare("SELECT COUNT(id) FROM products WHERE products.category_id = $a ");
+        $obj_select->execute();
+
+        return $obj_select->fetchColumn();
+    }
 }
 

@@ -11,5 +11,6 @@ RewriteRule thanh-toan-online.html index.php?controller=payment&action=online
 RewriteRule san-pham/(.*)/([0-9]+).html index.php?controller=product&action=detail&id=$2
 RewriteRule danh-sach-san-pham.html index.php?controller=sanpham
 RewriteRule dssp/([0-9]+).html index.php?controller=Getbydanhsach&cateid=$1
+RewriteRule dssp/([0-9]+)/([0-9]+).html index.php?controller=Getbydanhsach&cateid=$1&page=$2
 RewriteRule news.html index.php?controller=news&action=index
 RewriteRule chi-tiet-news/([0-9]+).html index.php?controller=news&action=detail&id=$1
