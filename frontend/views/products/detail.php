@@ -37,8 +37,7 @@ require_once 'helpers/Helper.php';
             </div>
             <div class="detail-comment">
                 <h2 class="link-category-item">Bình luận</h2>
-                <div class="fb-comments" data-href="https://google.com" data-width="100%"
-                     data-numposts="5"></div>
+                <div class="fb-comments" data-href="https://google.com" data-width="100%" data-numposts="5"></div>
             </div>
         </div>
         <div class="news-relative-wrap col-md-4 col-sm-4 col-xs-12">

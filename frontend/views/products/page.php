@@ -33,7 +33,6 @@ require_once 'helpers/Helper.php';?>
                 </div>	   <?php endforeach; ?>
 		  <?php endif; ?>
           </div>
-		
     </div>
 </div>
 <!--    END PRODUCT-->
