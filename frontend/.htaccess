@@ -15,3 +15,7 @@ RewriteRule dssp/([0-9]+).html index.php?controller=Getbydanhsach&cateid=$1
 RewriteRule dssp/([0-9]+)/([0-9]+).html index.php?controller=Getbydanhsach&cateid=$1&page=$2
 RewriteRule news.html index.php?controller=news&action=index
 RewriteRule chi-tiet-news/(.*)/([0-9]+).html index.php?controller=news&action=detail&id=$2
+# Rewrite cho trang login
+RewriteRule login.html index.php?controller=customer&action=login
+# Rewrite cho trang register
+RewriteRule register.html index.php?controller=customer&action=register
