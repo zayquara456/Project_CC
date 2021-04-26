@@ -145,13 +145,13 @@
                 <a href="index.php" class="material-button submenu-toggle">Trang chủ</a>
             </li>
             <li>
-                <a href="#" class="material-button submenu-toggle">Sản phẩm</a>
+                <a href="danh-sach-san-pham.html" class="material-button submenu-toggle">Sản phẩm</a>
             </li>
             <li>
-                <a href="#" class="material-button submenu-toggle">Tin tức</a>
+                <a href="news.html" class="material-button submenu-toggle">Tin tức</a>
             </li>
             <li>
-                <a href="#" class="material-button submenu-toggle">Đăng nhập</a>
+                <a href="login.html" class="material-button submenu-toggle">Đăng nhập</a>
             </li>
         </ul>
         <!-- sidebar menu end -->
