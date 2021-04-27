@@ -5630,3 +5630,8 @@ span.new-image-content img{
 .d-none{
     display: none;
 }
+
+.username{
+    color: white;
+    font-size: 16px;
+}

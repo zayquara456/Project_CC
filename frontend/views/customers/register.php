@@ -91,10 +91,15 @@
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
             transition: 0.1s ease;
         }
-
+        .signIn{
+            margin-top: 30px;
+            position: absolute;
+            bottom: 35px;
+            left: 40px;
+        }
         .or {
             position: absolute;
-            top: 180px;
+            top: 155px;
             left: 280px;
             width: 40px;
             height: 40px;
@@ -117,15 +122,16 @@
             background-size: cover;
             background-position: center;
             border-radius: 0 2px 2px 0;
+            margin-top: 60px;
         }
 
-        .right .loginwith {
+        /* .right .loginwith {
             display: block;
             margin-bottom: 40px;
             font-size: 28px;
             color: #FFF;
             text-align: center;
-        }
+        } */
 
         button.social-signin {
             margin-bottom: 20px;
@@ -166,30 +172,27 @@
 </head>
 <body>
 
-<form method="post" action="">
+<Form method="post" action="">
+    <div id="login-box">
+        <div class="left">
+            <h1>Sign up</h1>
+            <input type="text" name="username" placeholder="Username" value="" id="username"/>
+            <input type="password" name="password" value="" id="password" placeholder="Password" />
+            <input type="password" name="password_confirm" value="" id="password_confirm" placeholder="Confirm password" />
+            <div style="display: flex;">
+                <input type="submit" name="register" value="Sign up" style="margin-right: 20px"/>
+            </div>
+        </div>
 
+        <div class="right">
+            <button class="social-signin facebook">Log in with facebook</button>
+            <button class="social-signin twitter">Log in with Twitter</button>
+            <button class="social-signin google">Log in with Google+</button>
+        </div>
 
-<div id="login-box">
-    <div class="left">
-        <h1>Sign up</h1>
+        <div class="or">OR</div>
 
-<!--        <input type="text" name="customername" placeholder="username" />-->
-        <input type="text" name="username" placeholder="Username" value="" id="username"/>
-        <input type="password" name="password" value="" id="password" placeholder="Password" />
-        <input type="password" name="password_confirm" value="" id="password_confirm" placeholder="Confirm password" />
-        <input type="submit" name="register" value="Sign up" />
+        <div class="signIn">Do you already have an account ? <b><a href="login.html">Sign in</a></b></div>
     </div>
-
-    <div class="right">
-        <span class="loginwith">Sign in with<br />social network</span>
-
-        <button class="social-signin facebook">Log in with facebook</button>
-        <button class="social-signin twitter">Log in with Twitter</button>
-        <button class="social-signin google">Log in with Google+</button>
-    </div>
-
-    <div class="or">OR</div>
-
-</div>
-</form>
+</Form>
 </body>

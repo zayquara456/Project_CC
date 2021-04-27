@@ -31,7 +31,7 @@ if (isset($_SESSION['user'])) {
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="assets/uploads/<?php echo $avatar; ?>" class="user-image" alt="User Image">
+                        <img src="assets/uploads/admin.png" class="user-image" alt="User Image">
                         <span class="hidden-xs"><?php echo $username; ?></span>
                     </a>
                     <ul class="dropdown-menu">
@@ -68,7 +68,7 @@ if (isset($_SESSION['user'])) {
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="assets/uploads/<?php echo $avatar; ?>" class="img-circle" alt="User Image">
+                <img src="assets/uploads/admin.png" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
                 <p><?php echo $username; ?></p>

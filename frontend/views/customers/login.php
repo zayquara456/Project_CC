@@ -11,7 +11,7 @@
 
         section .circle, section .thin {
             background-color: #2CA9D7;
-            display: inline-block
+            display: inline-block;
         }
 
         section .circle {
@@ -62,7 +62,8 @@
             font-size: 17px;
             text-transform: capitalize;
             border-radius: 3px;
-            margin-left: 109px
+            margin-top: 10px;
+            margin-bottom: 10px;
         }
 
         ::-webkit-input-placeholder {
@@ -89,12 +90,16 @@
     <div class="thin"></div>
     <p>Login</p>
 
-    <form method="post" action="">
-        <input type="text" name="username" value="<?php if(isset($_SESSION['username']) ? $_SESSION['username'] : "") ?>" id="username" placeholder="Username">
+    <Form action="" method="POST">
+        <input type="text" name="username" value="<?php if(isset($_POST['username'])) echo $_POST['username']; else "" ?>" id="username" placeholder="Username">
         <input type="password" name="password" value="" id="password" placeholder="Password">
-        <a href="register.html">Create an Account</a>
-        <input type="submit" name="login" value="log in">
-    </form>
+        <div>
+            <input type="checkbox" name="rememberLogin" value="" id="rememberLogin">
+            <label for="rememberLogin" style="margin-bottom: 0px">Remember login</label><br>
+            <input type="submit" name="login" value="log in"><br>
+            <span>Do not have an account ? <a href="register.html">Create an Account</a></span>
+        </div>
+    </Form>
 
 </section>
 

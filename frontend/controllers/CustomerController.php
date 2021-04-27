@@ -27,45 +27,63 @@ class CustomerController
     }
 
     public function login() {
-        //nếu user đã đăngn hập r thì ko cho truy cập lại trang login, mà chuenr hướng tới backend
-        if (isset($_SESSION['user'])) {
+        //nếu user đã đăng nhập r thì ko cho truy cập lại trang login, mà chuenr hướng tới backend
+        if (isset($_SESSION['username'])) {
             header('Location: index.php');
             exit();
         }
         if (isset($_POST['login'])) {
-//            die;
+            global $username;
             $username = $_POST['username'];
-            //do password đang lưu trong CSDL sử dụng cơ chế mã hóa md5 nên cần phải thêm
-//            hàm md5 cho password
-            $password = md5($_POST['password']);
-            //validate
-            if (empty($username) || empty($password)) {
-                $this->error = 'Username hoặc password không được để trống';
+            $password = $_POST['password'];
+            $this->error = "";
+            if (empty($username)) {
+                $this->error = 'Username không được để trống<br>';
+            }
+            if(empty($password)){
+                $this->error .= 'Password không được để trống<br>';
             }
             $user_model = new User();
             if (empty($this->error)) {
-                $user = $user_model->getUserByUsernameAndPassword($username, $password);
+                $user = $user_model->getUserByUsernameAndPassword($username, md5($password));
                 if (empty($user)) {
                     $this->error = 'Sai username hoặc password';
                 } else {
-                    $_SESSION['success'] = 'Đăng nhập thành công';
+                    // $_SESSION['success'] = 'Đăng nhập thành công';
                     //tạo session user để xác định user nào đang login
-                    $_SESSION['user'] = $user;
+                    if(isset($_POST['rememberLogin'])){
+                        setcookie('is_login', true, time()+3600);
+                        setcookie('username', $username, time()+3600);
+                    }
+                    $_SESSION['username'] = $username;
                     header("Location: index.php");
                     exit();
                 }
             }
         }
         $this->content = $this->render('views/customers/login.php');
-
         require_once 'views/layouts/main_login.php';
+    }
+
+    public function logout(){
+        global $username;
+        if(isset($_SESSION['username'])){
+            unset($_SESSION['username']);
+        }
+        if(isset($_COOKIE['is_login'])){
+            setcookie('is_login', false, 0);
+            setcookie('username', $username, 0);
+        }
+        header("Location: login.html");
+        exit();
+        // $this->content = $this->render('views/customers/login.php');
+        // require_once 'views/layouts/main_login.php';
     }
 
     /**
      * Đăng ký tài khoản mới, mặc định tất cả các user đều có quyền admin
      */
     public function register() {
-
         if (isset($_POST['register'])) {
             $user_model = new User();
             $username = $_POST['username'];

@@ -51,7 +51,7 @@ require_once 'helpers/Helper.php';
                                    value="<?php echo $cart['quantity']; ?>">
                         </td>
                         <td>
-                            <?php echo number_format($cart['price']); ?>
+                            <?php echo number_format($cart['price'], "0", ".", ",")." VNĐ"; ?>
                         </td>
                         <td>
                             <?php
@@ -59,12 +59,12 @@ require_once 'helpers/Helper.php';
                             //Cộng tích lũy thành tiền này cho tổng giá trị
                             //đơn hàng
                             $total_cart += $total_item;
-                            echo number_format($total_item);
+                            echo number_format($total_item, "0", ".", ",")." VNĐ";
                             ?>
                         </td>
                         <td>
                             <a class="content-product-a"
-                               href="xoa-san-pham/<?php echo $product_id; ?>.html">
+                               href="xoa-san-pham/<?php echo $product_id; ?>.html"  onclick="return confirm('Bạn có muốn xóa sản <?php echo $cart['name']; ?> ?')">
                                 Xóa
                             </a>
                         </td>
@@ -77,15 +77,15 @@ require_once 'helpers/Helper.php';
                     <td colspan="5" style="text-align: right">
                         Tổng giá trị đơn hàng:
                         <span class="product-price">
-                           <?php echo number_format($total_cart); ?>
+                           <?php echo number_format($total_cart, "0", ".", ","); ?> VNĐ
                         </span>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="5" class="product-payment">
-                        <a href="xoa-tat-ca.html" class="btn btn-danger">Xóa tất cả</a>
+                        <a href="xoa-tat-ca.html" class="btn btn-danger" onclick="return confirm('Bạn có muốn xóa tất cả sản phẩm trong giỏ ?')">Xóa tất cả</a>
                         <span>
-                            <input type="submit" name="updateCart" value="Cập nhật lại giá" class="btn btn-primary">
+                            <input type="submit" name="updateCart" value="Cập nhật" class="btn btn-primary">
                             <a href="thanh-toan.html" class="btn btn-success">Đến trang thanh toán</a>
                         </span>
                     </td>

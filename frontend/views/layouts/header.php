@@ -26,17 +26,18 @@
                             <img src="/template/camping1/assets/images/icon-flag-en.png" class="icon-language">
                         </a> -->
                     </li>
+                    <li class="username"><?php if(isset($_SESSION['username'])) echo $_SESSION['username'];  else echo ""; ?></li>
                     <li>
                         <a href="gio-hang-cua-ban.html" class="cart-link">
                             <i class="fa fa-cart-plus"></i>
-                          <?php
-                          $cart_total = 0;
-                          if (isset($_SESSION['cart'])) {
-                            foreach ($_SESSION['cart'] AS $cart) {
-                              $cart_total += $cart['quantity'];
-                            }
-                          }
-                          ?>
+                            <?php
+                                $cart_total = 0;
+                                if (isset($_SESSION['cart'])) {
+                                    foreach ($_SESSION['cart'] as $cart) {
+                                        $cart_total += $cart['quantity'];
+                                    }
+                                }
+                            ?>
                             <span class="cart-amount">
                                 <?php echo $cart_total; ?>
                             </span>
@@ -97,7 +98,11 @@
                     <a href="gio-hang-cua-ban.html" class="material-button submenu-toggle">Giỏ hàng</a>
                 </li>
                 <li>
-                    <a href="login.html" class="material-button submenu-toggle">Đăng nhập</a>
+                    <?php if(isset($_SESSION['username'])){?>
+                        <a href="logout.html" class="material-button submenu-toggle">Đăng xuất</a>
+                    <?php }else{?>
+                       <a href="login.html" class="material-button submenu-toggle">Đăng nhập</a>
+                    <?php }?>
                 </li>
             </ul>
             <!-- header left menu end -->
